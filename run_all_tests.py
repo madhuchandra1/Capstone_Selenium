@@ -1,89 +1,33 @@
-# # run_all_tests.py
-# import subprocess
-# import sys
-# import os
-#
-# if __name__ == "__main__":
-#     # Create reports directory if not exists
-#     reports_dir = "reports"
-#     allure_results_dir = os.path.join(reports_dir, "allure-results")
-#     allure_report_dir = os.path.join(reports_dir, "allure-report")
-#
-#     os.makedirs(allure_results_dir, exist_ok=True)
-#
-#     print(" Running all tests with Allure + HTML report generation...\n")
-#
-#     # Run pytest with both Allure and HTML reporting
-#     result = subprocess.run([
-#         sys.executable, "-m", "pytest",
-#         "tests/",
-#         "-v",
-#         "-s",
-#         f"--alluredir={allure_results_dir}",              # Allure results
-#         f"--html={reports_dir}/report.html",              # HTML report
-#         "--self-contained-html"                           # Single-file HTML report
-#     ])
-#
-#     # Check result
-#     if result.returncode == 0:
-#         print("\n✅ All tests passed successfully!")
-#     else:
-#         print(f"\n❌ Some tests failed! (Exit code: {result.returncode})")
-#
-#     # Generate Allure Report
-#     print("\n📊 Generating Allure report...")
-#     subprocess.run([
-#         "allure", "generate", allure_results_dir,
-#         "--clean", "-o", allure_report_dir
-#     ])
-#
-#     print(f"✅ Allure Report generated at: {allure_report_dir}")
-#     print(f"✅ HTML Report generated at: {reports_dir}/report.html")
-#
-#     # Optional: Auto-open Allure report in browser
-#     # subprocess.run(["allure", "open", allure_report_dir])
 # run_all_tests.py
 import subprocess
 import sys
 import os
 
 if __name__ == "__main__":
-    # Create reports directory if not exists
     reports_dir = "reports"
-    allure_results_dir = os.path.join(reports_dir, "allure-results")
-    allure_report_dir = os.path.join(reports_dir, "allure-report")
+    allure_results = os.path.join(reports_dir, "allure-results")
 
-    os.makedirs(allure_results_dir, exist_ok=True)
+    # Create reports directory
+    os.makedirs(allure_results, exist_ok=True)
 
-    print("Running all tests with Allure + HTML report generation...\n")
+    print(" Running tests with HTML + Allure reporting...")
 
-    # Run pytest with both Allure and HTML reporting
+    # Run pytest with BOTH HTML and Allure
     result = subprocess.run([
         sys.executable, "-m", "pytest",
         "tests/",
         "-v",
         "-s",
-        f"--alluredir={allure_results_dir}",  # Allure results
-        f"--html={reports_dir}/report.html",  # HTML report
-        "--self-contained-html"               # Single-file HTML report
+        f"--html={reports_dir}/report.html",
+        "--self-contained-html",
+        f"--alluredir={allure_results}"
     ])
 
-    # Check result
     if result.returncode == 0:
-        print("\nAll tests passed successfully!")
+        print("✅ All tests passed!")
     else:
-        print(f"\nSome tests failed! (Exit code: {result.returncode})")
+        print(f" {result.returncode} test(s) failed!")
 
-    # Generate Allure Report
-    print("\nGenerating Allure report...")
-    subprocess.run([
-        "allure", "generate", allure_results_dir,
-        "--clean", "-o", allure_report_dir
-    ])
-
-    print(f"Allure Report generated at: {allure_report_dir}")
-    print(f"HTML Report generated at: {reports_dir}/report.html")
-
-    # Optional: Auto-open Allure report in browser
-    # subprocess.run(["allure", "open", allure_report_dir])
-
+    print("✅ Reports generated:")
+    print(f"   HTML: {reports_dir}/report.html")
+    print(f"   Allure: {allure_results}/")
