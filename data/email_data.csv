@@ -1,0 +1,6 @@
+TestCaseID,Email,ExpectedResult
+TC001,test@example.com,Valid
+TC002,invalid-email,Invalid
+TC003,user@domain.org,Valid
+TC004,,Invalid
+TC005,admin@test.co.uk,Valid

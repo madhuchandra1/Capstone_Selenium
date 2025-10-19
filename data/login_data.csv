@@ -1,0 +1,6 @@
+TestCaseID,Username,Password,ExpectedResult
+TC101,standard_user,secret_sauce,Success
+TC102,locked_out_user,secret_sauce,Error
+TC103,problem_user,secret_sauce,Success
+TC104,,secret_sauce,Error
+TC105,standard_user,,Error
