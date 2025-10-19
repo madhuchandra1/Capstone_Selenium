@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     os.makedirs(allure_results_dir, exist_ok=True)
 
-    print("🚀 Running all tests with Allure + HTML report generation...\n")
+    print(" Running all tests with Allure + HTML report generation...\n")
 
     # Run pytest with both Allure and HTML reporting
     result = subprocess.run([
