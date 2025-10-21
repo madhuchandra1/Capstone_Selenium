@@ -5,3 +5,16 @@ pyautogui==0.9.53
 requests==2.31.0
 webdriver-manager==4.0.2
 pytest-html==4.1.1
+pytest
+pytest-html
+allure-pytest
+selenium
+openpyxl
+pytest
+pytest-html
+allure-pytest
+selenium
+openpyxl
+webdriver-manager
+pyautogui
+requests

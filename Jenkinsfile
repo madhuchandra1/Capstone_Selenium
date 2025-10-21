@@ -16,19 +16,21 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                bat """
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+                """
             }
         }
 
         stage('Run Tests & Generate Reports') {
             steps {
                 bat """
-                    python -m pytest tests/ ^
-                        --html=%HTML_REPORT% ^
-                        --self-contained-html ^
-                        --alluredir=%ALLURE_RESULTS% ^
-                        -v -s
+                python -m pytest tests/ ^
+                    --html=%HTML_REPORT% ^
+                    --self-contained-html ^
+                    --alluredir=%ALLURE_RESULTS% ^
+                    -v -s
                 """
             }
         }
@@ -46,7 +48,7 @@ pipeline {
                 reportName: 'HTML Report'
             ])
 
-            // Publish Allure Report (ONLY works if Allure Plugin is installed!)
+            // Publish Allure Report
             allure([
                 includeProperties: false,
                 jdk: '',
