@@ -36,6 +36,7 @@ pipeline {
 
     post {
         always {
+            // Publish HTML Report
             publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -45,6 +46,7 @@ pipeline {
                 reportName: 'HTML Report'
             ])
 
+            // Publish Allure Report (ONLY works if Allure Plugin is installed!)
             allure([
                 includeProperties: false,
                 jdk: '',
