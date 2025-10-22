@@ -24,10 +24,10 @@ if __name__ == "__main__":
     ])
 
     if result.returncode == 0:
-        print("✅ All tests passed!")
+        print(" All tests passed!")
     else:
         print(f" {result.returncode} test(s) failed!")
 
-    print("✅ Reports generated:")
+    print(" Reports generated:")
     print(f"   HTML: {reports_dir}/report.html")
     print(f"   Allure: {allure_results}/")
