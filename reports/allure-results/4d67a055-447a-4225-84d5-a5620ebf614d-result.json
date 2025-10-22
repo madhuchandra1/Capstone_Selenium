@@ -1,0 +1,1 @@
+{"name": "test_page_title[chrome]", "status": "passed", "parameters": [{"name": "driver", "value": "'chrome'"}], "start": 1761124401766, "stop": 1761124405586, "uuid": "2484c3a4-e4a0-458e-8a8c-f361adbb8019", "testCaseId": "835ac3a6871c4791c03ceebeb6351367", "fullName": "tests.test_cross_browser_title#test_page_title", "titlePath": ["tests", "test_cross_browser_title.py"]}
